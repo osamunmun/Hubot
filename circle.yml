@@ -5,7 +5,7 @@ dependencies:
   cache_directories:
     - "~/cache"
   pre:
-    - docker-build.sh
+    - ./docker-build.sh
 test:
   override:
     - docker run -e HUBOT_SLACK_TOKEN=${HUBOT_SLACK_TOKEN} -e HUBOT_SLACK_TEAM=${HUBOT_SLACK_TEAM} -e PORT=${PORT} -d -p 9999:9999 -v "$(pwd)":/hubot hubot
