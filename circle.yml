@@ -1,0 +1,3 @@
+test:
+  override:
+    - docker run -v "$(pwd)":/hubot hubot
