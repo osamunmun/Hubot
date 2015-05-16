@@ -11,4 +11,4 @@ dependencies:
     - docker save hubot > ~/docker/hubot.tar
 test:
   override:
-    - docker run -v "$(pwd)":/hubot hubot
+    - docker run -p 9999:9999 -v "$(pwd)":/hubot hubot
