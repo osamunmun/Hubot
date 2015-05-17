@@ -7,5 +7,5 @@
     - git: repo=https://github.com/osamunmun/hubot.git dest=/home/ec2-user/hubot accept_hostkey=yes
     - file: path=/home/ec2-user/cache state=directory
     - shell: cd /home/ec2-user/hubot; sudo ./docker-build.sh
-    - shell: cd /home/ec2-user/hubot; sudo docker run -e HUBOT_STAMPS={{ HUBOT_STAMPS }} -e HUBOT_SLACK_TOKEN={{ HUBOT_SLACK_TOKEN }} -e HUBOT_SLACK_TEAM={{ HUBOT_SLACK_TEAM }} -e PORT={{ PORT }} -p 9999:9999 -v $(pwd):/hubot -it hubot/slack bin/hubot
-
+    - shell: sudo docker stop $(sudo docker ps -a -q)
+    - shell: cd /home/ec2-user/hubot; sudo docker run -e HUBOT_STAMPS={{ HUBOT_STAMPS }} -e HUBOT_SLACK_TOKEN={{ HUBOT_SLACK_TOKEN }} -e HUBOT_SLACK_TEAM={{ HUBOT_SLACK_TEAM }} -e PORT={{ PORT }} -p 9999:9999 -d -v $(pwd):/hubot hubot/slack
