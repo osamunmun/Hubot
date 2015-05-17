@@ -15,4 +15,4 @@ module.exports = (robot) ->
   robot.respond /stamp list/i, (msg) ->
     keys = for key, value of stamps
              key
-    msg.send keys
+    msg.send keys.join('\n')
