@@ -8,11 +8,12 @@
 stamps = JSON.parse(process.env.HUBOT_STAMPS)
 
 module.exports = (robot) ->
-  robot.respond /stamp me (.*)/i, (msg) ->
-    keyword = msg.match[1]
-    msg.send stamps[keyword] ? "No stamp for #{keyword}"
-
-  robot.respond /stamp list/i, (msg) ->
-    keys = for key, value of stamps
-             key
-    msg.send keys.join('\n')
+  robot.hear /(stamp|stp) (.*)/i, (msg) ->
+    response = if msg.match[2] == 'list'
+      keys = for key, value of stamps
+               key
+      keys.join(',')
+    else
+      keyword = msg.match[2]
+      stamps[keyword] ? "No stamp for #{keyword}"
+    msg.send response
