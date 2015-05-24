@@ -8,4 +8,4 @@
     - file: path=/home/ec2-user/cache state=directory
     - shell: cd /home/ec2-user/hubot; sudo ./docker-build.sh
     - shell: sudo docker stop $(sudo docker ps -a -q)
-    - shell: cd /home/ec2-user/hubot; sudo docker run -e HUBOT_STAMPS={{ HUBOT_STAMPS }} -e HUBOT_SLACK_TOKEN={{ HUBOT_SLACK_TOKEN }} -e HUBOT_SLACK_TEAM={{ HUBOT_SLACK_TEAM }} -e PORT={{ PORT }} -p 9999:9999 -d -v $(pwd):/hubot hubot/slack
+    - shell: cd /home/ec2-user/hubot; sudo docker run -e HUBOT_STAMPS={{ HUBOT_STAMPS }} -e HUBOT_SLACK_TOKEN={{ HUBOT_SLACK_TOKEN }} -e HUBOT_SLACK_TEAM={{ HUBOT_SLACK_TEAM }} -d -v $(pwd):/hubot hubot/slack

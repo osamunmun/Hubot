@@ -1,2 +1,2 @@
 [aws]
-hubot
+52.68.202.113 ansible_ssh_user=ec2-user

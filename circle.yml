@@ -8,6 +8,8 @@ dependencies:
     - ./docker-build.sh
     - npm install
     - sudo pip install awscli
+    - sudo pip install ansible
+    - echo "${ANSIBLE_VAULT}" > ~/vault.txt
 test:
   override:
     - ./node_modules/.bin/gulp mocha
