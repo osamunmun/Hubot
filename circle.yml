@@ -7,7 +7,13 @@ dependencies:
   pre:
     - ./docker-build.sh
     - npm install
+    - sudo pip install awscli
 test:
   override:
     - ./node_modules/.bin/gulp mocha
     - docker run -e HUBOT_SLACK_TOKEN=${HUBOT_SLACK_TOKEN} -e HUBOT_SLACK_TEAM=${HUBOT_SLACK_TEAM} -e PORT=${PORT} -d -p 9999:9999 -v "$(pwd)":/hubot hubot/slack
+deployment:
+  production:
+    branch: master
+    commands:
+      - sh ./deploy.sh
